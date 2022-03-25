@@ -1,0 +1,19 @@
+// Question link: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/submissions/
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int min_cur = prices[0];
+        int max_profit = 0;
+        for(int n: prices){
+            if(min_cur < n){
+                max_profit = Math.max(max_profit, n - min_cur);
+            }else{
+                min_cur = n;
+            }
+        }
+        return max_profit;
+    }
+}
+
+// Runtime: 2 ms, faster than 86.36% of Java online submissions for Best Time to Buy and Sell Stock.
+// Memory Usage: 83.6 MB, less than 51.04% of Java online submissions for Best Time to Buy and Sell Stock.
