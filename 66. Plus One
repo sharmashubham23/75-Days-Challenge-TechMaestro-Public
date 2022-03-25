@@ -1,0 +1,38 @@
+// Question link: https://leetcode.com/problems/plus-one/submissions/
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        
+        int len = digits.length;
+        if(len == 0){
+            return digits;
+        }
+        if(digits[len-1] < 9){
+            digits[len-1] = digits[len-1]+1;
+            return digits;
+        }
+        ArrayList<Integer> list = new ArrayList<>();
+        int carry = 1;
+        for(int i= len;i>0;i--){
+            if(digits[i-1] + carry > 9){
+                list.add(0, 0);
+                carry = 1;
+            }else{
+                list.add(0,digits[i-1] + carry);
+                carry = 0;
+            }
+        }
+        if(carry == 1){
+            list.add(0,1);
+        }
+        //convert arraylist to arr
+        int[] ans = new int[list.size()];
+        for(int i=0;i<list.size();i++){
+            ans[i] = list.get(i);
+        }
+        return ans;
+    }
+}
+
+//Runtime: 0 ms, faster than 100.00% of Java online submissions for Plus One.
+//Memory Usage: 42.9 MB, less than 18.39% of Java online submissions for Plus One.
