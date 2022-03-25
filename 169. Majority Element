@@ -1,0 +1,22 @@
+// Question link:
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int len = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int n: nums){
+            map.put(n, map.getOrDefault(n, 0)+1);
+        }
+        
+        for(int k: map.keySet()){
+            if(map.get(k) > len/2){
+                return k;
+            }
+        }
+        return 0;
+    }
+}
+
+//Runtime: 11 ms, faster than 31.77% of Java online submissions for Majority Element.
+//Memory Usage: 55.8 MB, less than 58.52% of Java online submissions for Majority Element.
