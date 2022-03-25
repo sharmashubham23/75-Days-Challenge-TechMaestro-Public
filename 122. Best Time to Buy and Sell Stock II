@@ -1,0 +1,18 @@
+//Question link : https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+
+class Solution {
+    public int maxProfit(int[] prices) {
+    int profit = 0, i = 0;
+    while (i < prices.length) {
+        // find next local minimum
+        while (i < prices.length-1 && prices[i+1] <= prices[i]) i++;
+        int min = prices[i++]; 
+        while (i < prices.length-1 && prices[i+1] >= prices[i]) i++;
+        profit += i < prices.length ? prices[i++] - min : 0;
+    }
+    return profit;
+}
+}
+
+//Runtime: 2 ms, faster than 31.77% of Java online submissions for Best Time to Buy and Sell Stock II.
+//Memory Usage: 44.1 MB, less than 59.63% of Java online submissions for Best Time to Buy and Sell Stock II.
