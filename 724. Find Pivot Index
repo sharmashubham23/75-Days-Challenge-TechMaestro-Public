@@ -1,0 +1,32 @@
+//Question link: https://leetcode.com/problems/find-pivot-index/submissions/
+
+class Solution {
+    public int pivotIndex(int[] nums) {
+        
+        int sum = 0;
+        int pointer = 0;
+        
+        for(int n: nums){
+            sum += n;
+        }
+        int sumleft = 0;
+        int sumright = 0;
+        if(sum - nums[0] == 0){
+            return 0;
+        }
+        
+        for(int i=1;i<nums.length;i++){
+            sumleft += nums[i-1];
+            sumright = sum - sumleft - nums[i];
+            if(sumleft == sumright){
+                return i;
+            }
+        }
+        
+        return -1;
+        
+    }
+}
+
+//Runtime: 1 ms, faster than 99.30% of Java online submissions for Find Pivot Index.
+//Memory Usage: 52.6 MB, less than 42.39% of Java online submissions for Find Pivot Index.
