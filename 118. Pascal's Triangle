@@ -1,0 +1,35 @@
+//Question link: https://leetcode.com/problems/pascals-triangle/
+
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        
+        List<List<Integer>> list = new ArrayList<>();
+        
+        for(int i=0;i<numRows;i++){
+            List<Integer> temp = new ArrayList<>();
+            if(i==0){
+                temp.add(1);
+                list.add(temp);
+                continue;
+            }
+            if(i==1){
+                temp.add(1);
+                temp.add(1);
+                list.add(temp);
+                continue;
+            }
+            temp.add(1);
+            for(int j=0;j<i-1;j++){
+                temp.add(list.get(i-1).get(j)+list.get(i-1).get(j+1));
+            }
+            temp.add(1);
+            list.add(temp);
+        }
+        
+        return list;
+        
+    }
+}
+
+//Runtime: 1 ms, faster than 65.03% of Java online submissions for Pascal's Triangle.
+//Memory Usage: 42.1 MB, less than 31.76% of Java online submissions for Pascal's Triangle.
