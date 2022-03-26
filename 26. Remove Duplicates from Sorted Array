@@ -1,0 +1,21 @@
+// Question link: https://leetcode.com/problems/remove-duplicates-from-sorted-array/
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int left = 0;
+        int right = 1;
+        while(right < nums.length){
+            if(nums[left] == nums[right])
+                right++;
+            else{
+                nums[left+1] = nums[right];
+                left = left+1;
+            }
+        }
+        
+        return left+1;
+    }
+}
+
+//Runtime: 1 ms, faster than 84.79% of Java online submissions for Remove Duplicates from Sorted Array.
+//Memory Usage: 47.3 MB, less than 71.14% of Java online submissions for Remove Duplicates from Sorted Array.
